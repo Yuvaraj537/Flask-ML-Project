@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Pizza Delivery Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body class="bg-dark text-white">
+
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            <div class="header-container d-flex justify-content-between align-items-center">
+                <h2 class="header-title">Pizza Delivery Predictor</h2>
+                <img src="https://cdn-icons-png.flaticon.com/512/1404/1404945.png" alt="Pizza Icon" style="height: 60px;">
+            </div>
+        </div>
+        <div class="card-body">
+            <form method="post" action="/predict">
+                <!-- Form fields (Restaurant, Location, Pizza details, etc.) -->
+                <div class="form-group">
+                    <label for="restaurantName">Restaurant Name</label>
+                    <select class="form-control" name="Restaurant Name" id="restaurantname" required>
+                        <option value="" disabled selected></option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="location">Location</label>
+                    <select class="form-control" name="Location" id="location" required>
+                        {% for i in range(30) %}
+                        <option value="" disabled selected></option>
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deliveryDuration">Delivery Duration (min)</label>
+                    <input type="number" class="form-control" name="Delivery Duration (min)" id="deliveryDuration" required />
+                </div>
+                <div class="form-group">
+                    <label for="pizzaSize">Pizza Size</label>
+                    <select class="form-control" name="Pizza Size" id="pizzaSize" required>
+                        <option value="" disabled selected></option>
+                        <option value="0">0</option><option value="1">1</option>
+                        <option value="2">2</option><option value="3">3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="pizzaType">Pizza Type</label>
+                    <select class="form-control" name="Pizza Type" id="pizzaType" required>
+                        {% for i in range(12) %}
+                        <option value="" disabled selected></option>
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="toppingsCount">Toppings Count</label>
+                    <input type="number" class="form-control" name="Toppings Count" id="toppingsCount" required />
+                </div>
+                <div class="form-group">
+                    <label for="distance">Distance (Km)</label>
+                    <input type="number" class="form-control" name="Distance (Km)" id="distance" required />
+                </div>
+                <div class="form-group">
+                    <label for="trafficLevel">Traffic Level</label>
+                    <select class="form-control" name="Traffic_Level" id="trafficLevel" required>
+                        <option value="" disabled selected></option>
+                        <option value="0">0</option><option value="1">1</option><option value="2">2</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="paymentMethod">Payment Method</label>
+                    <select class="form-control" name="Payment Method" id="paymentMethod" required>
+                        {% for i in range(6) %}
+                        <option value="" disabled selected></option>
+                        <option value="{{ i }}">{{ i }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="toppingDensity">Topping Density</label>
+                    <input type="number" class="form-control" name="Topping Density" id="toppingDensity" required />
+                </div>
+                <div class="form-group">
+                    <label for="paymentCategory">Payment Category</label>
+                    <select class="form-control" name="Payment_Category" id="paymentCategory" required>
+                        <option value="" disabled selected></option>
+                        <option value="0">0</option><option value="1">1</option>
+                    </select>
+                </div>
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Predict Delivery Delay</button>
+                </div>
+            </form>
+
+            {% if prediction_text %}
+            <div class="alert alert-info text-center">
+                <strong>{{ prediction_text }}</strong>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
