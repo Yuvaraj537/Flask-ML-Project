@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Stroke Risk Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="card bg-secondary text-white">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h2>Stroke Risk Predictor</h2>
+        </div>
+        <div class="card-body">
+            <form method="POST" action="/predict">
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <input type="number" class="form-control" id="gender" name="gender" min="0" max="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" min="0" max="120" required />
+                </div>
+                <div class="form-group">
+                    <label for="hypertension">Hypertension</label>
+                    <input type="number" class="form-control" id="hypertension" name="hypertension" min="0" max="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="heart_disease">Heart Disease</label>
+                    <input type="number" class="form-control" id="heart_disease" name="heart_disease" min="0" max="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="ever_married">Ever Married</label>
+                    <input type="number" class="form-control" id="ever_married" name="ever_married" min="0" max="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="work_type">Work Type</label>
+                    <input type="number" class="form-control" id="work_type" name="work_type" min="0" required />
+                </div>
+                <div class="form-group">
+                    <label for="residence_type">Residence Type</label>
+                    <input type="number" class="form-control" id="residence_type" name="residence_type" min="0" max="1" required />
+                </div>
+                <div class="form-group">
+                    <label for="avg_glucose_level">Average Glucose Level</label>
+                    <input type="number" class="form-control" id="avg_glucose_level" name="avg_glucose_level" min="0" step="any" required />
+                </div>
+                <div class="form-group">
+                    <label for="bmi">BMI</label>
+                    <input type="number" class="form-control" id="bmi" name="bmi" min="0" step="any" required />
+                </div>
+                <div class="form-group">
+                    <label for="smoking_status">Smoking Status</label>
+                    <input type="number" class="form-control" id="smoking_status" name="smoking_status" min="0" required />
+                </div>
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary btn-lg">Predict Stroke</button>
+                </div>
+            </form>
+
+            {% if prediction_text %}
+            <div class="alert alert-info mt-4 text-center">
+                <strong>{{ prediction_text }}</strong>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

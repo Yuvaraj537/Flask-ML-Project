@@ -1,0 +1,31 @@
+body {
+  background-image: url('/static/images/stroke_background.jpg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: white;  /* fallback background color */
+  color: black;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+label {
+  color: white !important;
+}
+
+.card.bg-secondary {
+  background-color: transparent !important; /* remove card bg color */
+}
+
+.card-header h2 {
+  color: #f0f0f0 !important; /* white-ish light text */
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+}
+
+input.form-control {
+  color: rgb(174, 28, 28) !important;
+  background-color: white !important; /* keep input backgrounds white */
+}
