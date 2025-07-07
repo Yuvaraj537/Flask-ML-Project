@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Loan Predictor - RBI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}" />
+
+</head>
+<body class="bg-light text-dark">
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-white border-bottom shadow-sm justify-content-center mt-2">
+    <span class="navbar-brand mb-0 h5 font-weight-bold text-uppercase">Bank of India – Loan Approval Predictor</span>
+</nav>
+
+<div class="container mt-4">
+    <div class="jumbotron bg-white shadow-sm p-4">
+
+        <!-- Error Message -->
+        {% if error %}
+        <div class="alert alert-danger text-center">{{ error }}</div>
+        {% endif %}
+
+        <!-- Form -->
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>Loan Type</label>
+                    <input type="number" name="loan_type" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Loan Amount</label>
+                    <input type="number" step="0.01" name="loan_amount" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Loan Months</label>
+                    <input type="number" name="loan_months" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Interest Rate (%)</label>
+                    <input type="number" step="0.01" name="interest_rate" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Purpose Loan</label>
+                    <input type="number" name="purpose_loan" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Employment Status</label>
+                    <input type="number" name="employment_status" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Monthly Income</label>
+                    <input type="number" step="0.01" name="monthly_income" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Applicant Age</label>
+                    <input type="number" name="applicant_age" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Gender</label>
+                    <input type="number" name="gender" class="form-control" required />
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Loan Status</label>
+                    <input type="number" name="loan_status" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success mt-3 px-5">Predict</button>
+            </div>
+        </form>
+
+        <!-- Final Result Output -->
+        {% if result %}
+        <div class="text-center mt-4" style="font-weight: bold; font-size: 1.2rem; white-space: pre-line;">
+            {{ result }}
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+
+</body>
+</html>
+
