@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Loan Approval Predictor</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+<body class="bg-white text-dark">
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header">
+                <div class="header-container d-flex justify-content-between align-items-center">
+                    <h2 class="header-title">Loan Approval Predictor</h2>
+                </div>
+            </div>
+            <div class="card-body">
+                <!-- Error Message -->
+                {% if error %}
+                <div class="alert alert-danger text-center">{{ error }}</div>
+                {% endif %}
+
+                <form method="POST" action="/predict">
+                    <div class="form-group">
+                        <label for="loan_type">Loan Type</label>
+                        <input type="number" class="form-control" name="loan_type" id="loan_type" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loan_amount">Loan Amount</label>
+                        <input type="number" class="form-control" name="loan_amount" id="loan_amount" step="0.01" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loan_months">Loan Months</label>
+                        <input type="number" class="form-control" name="loan_months" id="loan_months" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="interest_rate">Interest Rate (%)</label>
+                        <input type="number" class="form-control" name="interest_rate" id="interest_rate" step="0.01" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purpose_loan">Purpose Loan</label>
+                        <input type="number" class="form-control" name="purpose_loan" id="purpose_loan" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="employment_status">Employment Status</label>
+                        <input type="number" class="form-control" name="employment_status" id="employment_status" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="monthly_income">Monthly Income</label>
+                        <input type="number" class="form-control" name="monthly_income" id="monthly_income" step="0.01" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="applicant_age">Applicant Age</label>
+                        <input type="number" class="form-control" name="applicant_age" id="applicant_age" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <input type="number" class="form-control" name="gender" id="gender" required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loan_status">Loan Status</label>
+                        <input type="number" class="form-control" name="loan_status" id="loan_status" required />
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success">Predict Loan Status</button>
+                    </div>
+                </form>
+
+                {% if result %}
+                <div class="alert alert-info text-center mt-4">
+                    <strong>{{ result }}</strong>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
