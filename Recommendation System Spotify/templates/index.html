@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spotify Recommender</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 18px;
+            width: 300px;
+            border-radius: 8px;
+            border: none;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1ed760;
+        }
+
+        img {
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.6);
+        }
+
+        a {
+            color: #1DB954;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .recommendation-card {
+            background-color: #111;
+            padding: 10px;
+            border-radius: 12px;
+            margin: 15px;
+            width: 220px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spotify Song Recommendation</h1>
+    <form method="POST" action="/recommend">
+        <input type="text" name="song_name" placeholder="Enter song name" required>
+        <button type="submit">Recommend</button>
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommended Songs</h2>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        {% for song in recommendations %}
+            <div class="recommendation-card">
+                <a href="{{ url_for('show_song') }}?song_name={{ song.name }}">
+                    <img src="{{ song.image_url }}" width="200"><br>
+                    <strong>{{ song.name }}</strong><br>
+                    {{ song.artists }} ({{ song.year }})
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>
