@@ -1,0 +1,54 @@
+/* Container size smaller */
+.container {
+    max-width: 1050px;
+}
+
+/* Smaller padding inside card */
+.card {
+    padding: 7px;
+    background-color: rgba(0, 0, 0, 0.75); /* semi-transparent for readability */
+    color: white;
+}
+
+/* Labels in red */
+label {
+    color: #ff4d4d;
+    font-weight: 600;
+}
+
+/* Reduce input/select height for compactness */
+.form-control {
+    height: 40px;
+    font-size: 12px;
+}
+
+/* Smaller button */
+.btn-primary {
+    padding: 6px 20px;
+    font-size: 14px;
+}
+
+/* Header container smaller height */
+.header-container img {
+    height: 75px;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+/* Reduce vertical spacing between form groups */
+.form-group {
+    margin-bottom: 0.7rem;
+}
+
+/* Background: Pizza image with fallback brown */
+body {
+    background-color: #8B4513; /* fallback brown */
+    background-image: url('https://cdn.pixabay.com/photo/2017/12/09/08/18/pizza-3007395_1280.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
