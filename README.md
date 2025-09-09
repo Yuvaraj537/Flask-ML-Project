@@ -20,16 +20,3 @@ It is designed to be **simple, flexible, and easy to extend**, making it ideal f
 - ✅ Easy integration with databases and extensions  
 
 ---
-
-## 🖥️ Demo
-![Flask Demo](https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif)  
-> Interactive example of your app (replace with your GIF or screenshot)
-
----
-
-## ⚡ Installation
-
-### Clone the repository
-```bash
-git clone https://github.com/username/repo-name.git
-cd repo-name
